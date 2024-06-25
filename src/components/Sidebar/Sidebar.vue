@@ -16,24 +16,34 @@
       <transition name="dropdown">
         <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden mt-4">
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
+            <router-link to="/content/ga4-overview" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_traffic.svg" alt="Detail Traffic" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail Traffic</span>
+            <router-link to="/content/ga4-detail-traffic" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_traffic.svg" alt="Detail Traffic" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail Traffic</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/traffic_acquisition.svg" alt="Traffic Acquisition" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Traffic Acquisition</span>
+            <router-link to="/content/ga4-traffic-acquisition" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/traffic_acquisition.svg" alt="Traffic Acquisition" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Traffic Acquisition</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/engagements.svg" alt="Engagements" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Engagements</span>
+            <router-link to="/content/ga4-engagements" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/engagements.svg" alt="Engagements" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Engagements</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_event.svg" alt="Detail Event" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail Event</span>
+            <router-link to="/content/ga4-detail-event" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_event.svg" alt="Detail Event" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail Event</span>
+            </router-link>
           </li>
         </ul>
       </transition>
@@ -47,12 +57,16 @@
       <transition name="dropdown">
         <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
+            <router-link to="/content/gsc-overview" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/gsc/detail.svg" alt="Detail" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail</span>
+            <router-link to="/content/gsc-detail" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/gsc/detail.svg" alt="Detail" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail</span>
+            </router-link>
           </li>
         </ul>
       </transition>
@@ -66,28 +80,40 @@
       <transition name="dropdown">
         <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
+            <router-link to="/content/order-overview" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/seo.svg" alt="SEO" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">SEO</span>
+            <router-link to="/content/order-seo" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/seo.svg" alt="SEO" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">SEO</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/google_ads.svg" alt="Google Ads" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Google Ads</span>
+            <router-link to="/content/order-google-ads" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/google_ads.svg" alt="Google Ads" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Google Ads</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/direct.svg" alt="Direct" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Direct</span>
+            <router-link to="/content/order-direct" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/direct.svg" alt="Direct" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Direct</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/facebook.svg" alt="Facebook" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Facebook</span>
+            <router-link to="/content/order-facebook" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/facebook.svg" alt="Facebook" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Facebook</span>
+            </router-link>
           </li>
           <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
-            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/data_manager.svg" alt="Data Manager" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Data Manager</span>
+            <router-link to="/content/order-data-manager" class="flex items-center w-full">
+              <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/data_manager.svg" alt="Data Manager" />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Data Manager</span>
+            </router-link>
           </li>
         </ul>
       </transition>
