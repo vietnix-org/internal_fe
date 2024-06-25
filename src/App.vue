@@ -1,9 +1,11 @@
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col h-screen overflow-hidden"> <!-- Added overflow-hidden -->
     <Topbar />
-    <div class="flex flex-1">
+    <div class="flex flex-1 overflow-hidden"> <!-- Added overflow-hidden -->
       <Sidebar />
-      <Content />
+      <div class="flex-1 overflow-y-auto"> <!-- Added flex-1 and overflow-y-auto -->
+        <Content />
+      </div>
     </div>
     <Footer />
   </div>

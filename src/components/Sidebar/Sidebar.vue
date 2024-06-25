@@ -1,90 +1,100 @@
 <template>
-  <div :class="['transition-all duration-500 ease-in-out', isSidebarCollapsed ? 'w-16' : 'w-64']" class="bg-lightgrey dark:bg-sidebarDark h-full px-4 py-6">
-    <div class="mb-6">
+  <div
+    :class="[
+      'transition-all duration-500 ease-in-out',
+      isSidebarCollapsed ? 'w-20' : sidebarWidthClass
+    ]"
+    class="bg-lightgrey dark:bg-sidebarDark h-full px-4 py-6 overflow-y-auto overflow-x-hidden"
+    @mouseover="expandSidebar"
+    @mouseleave="collapseSidebar"
+  >
+    <div class="mb-8">
       <div class="flex items-center justify-between cursor-pointer" @click="toggleGroup('ga4')">
-        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm">GA4</h2>
-        <img v-if="!isSidebarCollapsed" :src="ga4Icon" alt="Toggle" class="h-5 w-5" />
+        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm hover:opacity-75">GA4</h2>
+        <img v-if="!isSidebarCollapsed" :src="ga4Icon" alt="Toggle" class="h-5 w-5 hover:opacity-75" />
       </div>
       <transition name="dropdown">
-        <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden">
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/overview.svg" alt="Overview" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+        <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/ga4/detail_traffic.svg" alt="Detail Traffic" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail Traffic</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_traffic.svg" alt="Detail Traffic" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail Traffic</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/ga4/traffic_acquisition.svg" alt="Traffic Acquisition" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Traffic Acquisition</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/traffic_acquisition.svg" alt="Traffic Acquisition" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Traffic Acquisition</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/ga4/engagements.svg" alt="Engagements" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Engagements</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/engagements.svg" alt="Engagements" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Engagements</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/ga4/detail_event.svg" alt="Detail Event" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail Event</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/ga4/detail_event.svg" alt="Detail Event" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail Event</span>
           </li>
         </ul>
       </transition>
     </div>
-    <div class="mb-6">
+    <hr class="my-4 border-gray-300 dark:border-gray-600">
+    <div class="mb-8">
       <div class="flex items-center justify-between cursor-pointer" @click="toggleGroup('gsc')">
-        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm">GSC</h2>
-        <img v-if="!isSidebarCollapsed" :src="gscIcon" alt="Toggle" class="h-5 w-5" />
+        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm hover:opacity-75">GSC</h2>
+        <img v-if="!isSidebarCollapsed" :src="gscIcon" alt="Toggle" class="h-5 w-5 hover:opacity-75" />
       </div>
       <transition name="dropdown">
-        <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden">
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/overview.svg" alt="Overview" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+        <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/gsc/detail.svg" alt="Detail" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Detail</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/gsc/detail.svg" alt="Detail" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Detail</span>
           </li>
         </ul>
       </transition>
     </div>
+    <hr class="my-4 border-gray-300 dark:border-gray-600">
     <div>
       <div class="flex items-center justify-between cursor-pointer" @click="toggleGroup('order')">
-        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm">Order</h2>
-        <img v-if="!isSidebarCollapsed" :src="orderIcon" alt="Toggle" class="h-5 w-5" />
+        <h2 :class="[isSidebarCollapsed ? 'text-center' : '']" class="text-gray-900 dark:text-black font-bold text-sm hover:opacity-75">Order</h2>
+        <img v-if="!isSidebarCollapsed" :src="orderIcon" alt="Toggle" class="h-5 w-5 hover:opacity-75" />
       </div>
       <transition name="dropdown">
-        <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden">
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/overview.svg" alt="Overview" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Overview</span>
+        <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/overview.svg" alt="Overview" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Overview</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/order/seo.svg" alt="SEO" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">SEO</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/seo.svg" alt="SEO" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">SEO</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/order/google_ads.svg" alt="Google Ads" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Google Ads</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/google_ads.svg" alt="Google Ads" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Google Ads</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/order/direct.svg" alt="Direct" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Direct</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/direct.svg" alt="Direct" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Direct</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/order/facebook.svg" alt="Facebook" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Facebook</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/facebook.svg" alt="Facebook" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Facebook</span>
           </li>
-          <li class="flex items-center py-2">
-            <img src="@/images/sidebar_icons/order/data_manager.svg" alt="Data Manager" class="h-5 w-5 mr-2" />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs">Data Manager</span>
+          <li :class="['flex items-center py-4 hover:opacity-75', isSidebarCollapsed ? 'gap-2' : 'gap-4']">
+            <img :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']" src="@/images/sidebar_icons/order/data_manager.svg" alt="Data Manager" />
+            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-black text-xs hover:opacity-75">Data Manager</span>
           </li>
         </ul>
       </transition>
     </div>
-    <div class="flex justify-center mt-6">
+    <div class="flex justify-center mt-8">
       <button @click="toggleSidebar" class="p-2">
-        <img :src="collapseIcon" alt="Collapse" class="h-5 w-5 inline-block" />
+        <img :src="collapseIcon" alt="Collapse" class="h-5 w-5" />
       </button>
     </div>
   </div>
@@ -104,7 +114,8 @@ export default {
       isGa4Expanded: false,
       isGscExpanded: false,
       isOrderExpanded: false,
-      isSidebarCollapsed: false
+      isSidebarCollapsed: false,
+      sidebarWidthClass: 'w-52' // Reduced max width
     }
   },
   computed: {
@@ -128,6 +139,17 @@ export default {
     },
     toggleSidebar() {
       this.isSidebarCollapsed = !this.isSidebarCollapsed;
+      this.sidebarWidthClass = this.isSidebarCollapsed ? 'w-20' : 'w-52'; // Increased min width and reduced max width
+    },
+    expandSidebar() {
+      if (this.isSidebarCollapsed) {
+        this.sidebarWidthClass = 'w-52';
+      }
+    },
+    collapseSidebar() {
+      if (this.isSidebarCollapsed) {
+        this.sidebarWidthClass = 'w-20';
+      }
     }
   }
 }
@@ -144,5 +166,9 @@ export default {
 .dropdown-enter, .dropdown-leave-to {
   height: 0;
   opacity: 0;
+}
+
+.overflow-hidden::-webkit-scrollbar {
+  display: none; /* Hide horizontal scrollbar */
 }
 </style>
