@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         lightblue: '#BFD7ED', // Light blue
         darkblue: '#5885AF',  // Dark blue
-        sidebarDark: '#A9CEE8', 
+        sidebarDark: '#68BBE3', 
       },
     },
   },
