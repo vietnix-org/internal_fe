@@ -21,31 +21,34 @@
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
-          :icon="['fac', isGa4Expanded ? 'angleDown' : 'angleUp']"
-          class="h-4 w-4 hover:opacity-75 rounded-corner-icon"
+          :icon="['fac', ga4Icon]"
+          class="h-5 w-5 hover:opacity-75"
         />
       </div>
-      <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-        <li
-          v-for="route in ga4Routes"
-          :key="route.path"
-          :class="[
-            'flex items-center py-4 hover:opacity-75',
-            isSidebarCollapsed ? 'gap-2' : 'gap-4',
-          ]"
-        >
-          <router-link
-            :to="route.path"
-            class="flex items-center w-full"
+      <transition name="dropdown">
+        <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li
+            v-for="route in ga4Routes"
+            :key="route.path"
+            :class="[
+              'flex items-center py-4 hover:opacity-75',
+              isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            ]"
           >
-            <font-awesome-icon
-              :icon="['fac', route.icon]"
-              :class="[isSidebarCollapsed ? 'h-3 w-3' : 'h-4 w-4']"
-            />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-          </router-link>
-        </li>
-      </ul>
+            <router-link
+              :to="route.path"
+              class="flex items-center w-full"
+              @click.prevent="navigateWithDelay(route.path)"
+            >
+              <font-awesome-icon
+                :icon="['fac', route.icon]"
+                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
+              />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
+            </router-link>
+          </li>
+        </ul>
+      </transition>
     </div>
     <hr class="my-4 border-gray-300 dark:border-gray-600" />
     <div class="mb-8">
@@ -61,31 +64,34 @@
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
-          :icon="['fac', isGscExpanded ? 'angleDown' : 'angleUp']"
-          class="h-4 w-4 hover:opacity-75 rounded-corner-icon"
+          :icon="['fac', gscIcon]"
+          class="h-5 w-5 hover:opacity-75"
         />
       </div>
-      <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-        <li
-          v-for="route in gscRoutes"
-          :key="route.path"
-          :class="[
-            'flex items-center py-4 hover:opacity-75',
-            isSidebarCollapsed ? 'gap-2' : 'gap-4',
-          ]"
-        >
-          <router-link
-            :to="route.path"
-            class="flex items-center w-full"
+      <transition name="dropdown">
+        <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li
+            v-for="route in gscRoutes"
+            :key="route.path"
+            :class="[
+              'flex items-center py-4 hover:opacity-75',
+              isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            ]"
           >
-            <font-awesome-icon
-              :icon="['fac', route.icon]"
-              :class="[isSidebarCollapsed ? 'h-3 w-3' : 'h-4 w-4']"
-            />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-          </router-link>
-        </li>
-      </ul>
+            <router-link
+              :to="route.path"
+              class="flex items-center w-full"
+              @click.prevent="navigateWithDelay(route.path)"
+            >
+              <font-awesome-icon
+                :icon="['fac', route.icon]"
+                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
+              />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
+            </router-link>
+          </li>
+        </ul>
+      </transition>
     </div>
     <hr class="my-4 border-gray-300 dark:border-gray-600" />
     <div>
@@ -101,37 +107,50 @@
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
-          :icon="['fac', isOrderExpanded ? 'angleDown' : 'angleUp']"
-          class="h-4 w-4 hover:opacity-75 rounded-corner-icon"
+          :icon="['fac', orderIcon]"
+          class="h-5 w-5 hover:opacity-75"
         />
       </div>
-      <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-        <li
-          v-for="route in orderRoutes"
-          :key="route.path"
-          :class="[
-            'flex items-center py-4 hover:opacity-75',
-            isSidebarCollapsed ? 'gap-2' : 'gap-4',
-          ]"
-        >
-          <router-link
-            :to="route.path"
-            class="flex items-center w-full"
+      <transition name="dropdown">
+        <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
+          <li
+            v-for="route in orderRoutes"
+            :key="route.path"
+            :class="[
+              'flex items-center py-4 hover:opacity-75',
+              isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            ]"
           >
-            <font-awesome-icon
-              :icon="['fac', route.icon]"
-              :class="[isSidebarCollapsed ? 'h-3 w-3' : 'h-4 w-4']"
-            />
-            <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-          </router-link>
-        </li>
-      </ul>
+            <router-link
+              :to="route.path"
+              class="flex items-center w-full"
+              @click.prevent="navigateWithDelay(route.path)"
+            >
+              <font-awesome-icon
+                :icon="['fac', route.icon]"
+                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
+              />
+              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
+            </router-link>
+          </li>
+        </ul>
+      </transition>
+    </div>
+    <div class="flex items-center justify-center mt-8 relative" :class="{ 'right-0': isSidebarCollapsed }">
+      <button
+        @click="toggleSidebar"
+        class="p-2"
+        @mouseover="handleMouseOverButton"
+        @mouseleave="handleMouseOutButton"
+      >
+        <font-awesome-icon :icon="['fac', collapseIcon]" class="h-5 w-5" />
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
@@ -145,27 +164,28 @@ export default {
     const isOrderExpanded = ref(false);
     const isSidebarCollapsed = ref(false);
     const sidebarWidthClass = ref('w-52');
+    const isMouseOverButton = ref(false);
 
     const ga4Routes = [
-      { path: '/content/ga4-overview', name: 'GA4 Overview', icon: 'overview' },
-      { path: '/content/ga4-detail-traffic', name: 'GA4 Detail Traffic', icon: 'detailTraffic' },
-      { path: '/content/ga4-traffic-acquisition', name: 'GA4 Traffic Acquisition', icon: 'trafficAcquisition' },
-      { path: '/content/ga4-engagements', name: 'GA4 Engagements', icon: 'engagements' },
-      { path: '/content/ga4-detail-event', name: 'GA4 Detail Event', icon: 'detailEvent' },
+      { path: '/content/ga4-overview', name: 'Overview', icon: 'overview' },
+      { path: '/content/ga4-detail-traffic', name: 'Detail Traffic', icon: 'detailTraffic' },
+      { path: '/content/ga4-traffic-acquisition', name: 'Traffic Acquisition', icon: 'trafficAcquisition' },
+      { path: '/content/ga4-engagements', name: 'Engagements', icon: 'engagements' },
+      { path: '/content/ga4-detail-event', name: 'Detail Event', icon: 'detailEvent' },
     ];
 
     const gscRoutes = [
-      { path: '/content/gsc-overview', name: 'GSC Overview', icon: 'overview' },
-      { path: '/content/gsc-detail', name: 'GSC Detail', icon: 'gscDetail' },
+      { path: '/content/gsc-overview', name: 'Overview', icon: 'overview' },
+      { path: '/content/gsc-detail', name: 'Detail', icon: 'gscDetail' },
     ];
 
     const orderRoutes = [
-      { path: '/content/order-overview', name: 'Order Overview', icon: 'overview' },
-      { path: '/content/order-seo', name: 'Order SEO', icon: 'seo' },
-      { path: '/content/order-google-ads', name: 'Order Google Ads', icon: 'googleAds' },
-      { path: '/content/order-direct', name: 'Order Direct', icon: 'direct' },
-      { path: '/content/order-facebook', name: 'Order Facebook', icon: 'facebook' },
-      { path: '/content/order-data-manager', name: 'Order Data Manager', icon: 'dataManager' },
+      { path: '/content/order-overview', name: 'Overview', icon: 'overview' },
+      { path: '/content/order-seo', name: 'SEO', icon: 'seo' },
+      { path: '/content/order-google-ads', name: 'Google Ads', icon: 'googleAds' },
+      { path: '/content/order-direct', name: 'Direct', icon: 'direct' },
+      { path: '/content/order-facebook', name: 'Facebook', icon: 'facebook' },
+      { path: '/content/order-data-manager', name: 'Data Manager', icon: 'dataManager' },
     ];
 
     const toggleGroup = (group) => {
@@ -196,12 +216,36 @@ export default {
       }
     };
 
+    // Event listeners for button hover
+    const handleMouseOverButton = () => {
+      isMouseOverButton.value = true;
+    };
+
+    const handleMouseOutButton = () => {
+      isMouseOverButton.value = false;
+      collapseSidebar();
+    };
+
+    onMounted(() => {
+      window.addEventListener('mouseover', handleMouseOverButton);
+      window.addEventListener('mouseout', handleMouseOutButton);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('mouseover', handleMouseOverButton);
+      window.removeEventListener('mouseout', handleMouseOutButton);
+    });
+
     return {
       isGa4Expanded,
       isGscExpanded,
       isOrderExpanded,
       isSidebarCollapsed,
       sidebarWidthClass,
+      ga4Icon: computed(() => (isGa4Expanded.value ? 'angleDown' : 'angleUp')),
+      gscIcon: computed(() => (isGscExpanded.value ? 'angleDown' : 'angleUp')),
+      orderIcon: computed(() => (isOrderExpanded.value ? 'angleDown' : 'angleUp')),
+      collapseIcon: computed(() => (isSidebarCollapsed.value ? 'expand' : 'collapse')),
       ga4Routes,
       gscRoutes,
       orderRoutes,
@@ -209,6 +253,8 @@ export default {
       toggleSidebar,
       expandSidebar,
       collapseSidebar,
+      handleMouseOverButton,
+      handleMouseOutButton,
     };
   },
 };
@@ -231,6 +277,17 @@ export default {
   filter: invert(100%);
 }
 
+/* Dropdown transition styles */
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.5s ease;
+}
+.dropdown-enter,
+.dropdown-leave-to {
+  height: 0;
+  opacity: 0;
+}
+
 /* Text styles */
 .text-gray-900 { /* Base text color for dark mode */
   color: #111827;
@@ -245,28 +302,5 @@ export default {
 /* Hide scrollbar */
 .overflow-hidden::-webkit-scrollbar {
   display: none;
-}
-
-/* Button styles */
-.rounded-corner-button {
-  border: 2px solid #333; /* Change border color as needed */
-  border-radius: 8px; /* Rounded corners */
-  transition: transform 0.2s; /* Add transition for movement */
-}
-
-.rounded-corner-button:hover {
-  transform: translateY(-2px); /* Move up slightly on hover */
-}
-
-/* Icon styles */
-.rounded-corner-icon {
-  border: 2px solid #333; /* Change border color as needed */
-  border-radius: 8px; /* Rounded corners */
-  padding: 2px; /* Adds some space around the icon */
-  transition: transform 0.2s; /* Add transition for movement */
-}
-
-.rounded-corner-icon:hover {
-  transform: translateY(-2px); /* Move up slightly on hover */
 }
 </style>
