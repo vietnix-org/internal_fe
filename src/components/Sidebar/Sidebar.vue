@@ -4,7 +4,7 @@
       'transition-all duration-300 ease-in-out',
       isSidebarCollapsed ? 'w-20' : sidebarWidthClass
     ]"
-    class="bg-lightmode dark:bg-darkmode h-full px-4 py-6 overflow-y-auto overflow-x-hidden relative"
+    class="bg-gray-800 dark:bg-gray-900 h-full px-4 py-6 overflow-y-auto overflow-x-hidden relative"
     @mouseover="expandSidebar"
     @mouseleave="collapseSidebar"
   >
@@ -15,42 +15,38 @@
       >
         <h2
           :class="[isSidebarCollapsed ? 'text-center' : '']"
-          class="text-gray-900 dark:text-white font-bold text-sm hover:opacity-75"
+          class="text-white dark:text-white font-bold text-sm hover:opacity-75"
         >
           GA4
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', ga4Icon]"
-          class="h-5 w-5 hover:opacity-75"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
         />
       </div>
-      <transition name="dropdown">
-        <ul v-show="isGa4Expanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-          <li
-            v-for="route in ga4Routes"
-            :key="route.path"
-            :class="[
-              'flex items-center py-4 hover:opacity-75',
-              isSidebarCollapsed ? 'gap-2' : 'gap-4',
-            ]"
+      <ul v-show="isGa4Expanded || isSidebarCollapsed" class="mt-4">
+        <li
+          v-for="route in ga4Routes"
+          :key="route.path"
+          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+        >
+          <router-link
+            :to="route.path"
+            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            @click.prevent="navigateWithDelay(route.path)"
           >
-            <router-link
-              :to="route.path"
-              class="flex items-center w-full"
-              @click.prevent="navigateWithDelay(route.path)"
-            >
-              <font-awesome-icon
-                :icon="['fac', route.icon]"
-                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
-              />
-              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </transition>
+            <font-awesome-icon
+              :icon="['fac', route.icon]"
+              class="h-5 w-5 text-white dark:text-white"
+            />
+            <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4">{{ route.name }}</span>
+          </router-link>
+        </li>
+      </ul>
     </div>
-    <hr class="my-4 border-gray-300 dark:border-gray-600" />
+    <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div class="mb-8">
       <div
         class="flex items-center justify-between cursor-pointer"
@@ -58,42 +54,38 @@
       >
         <h2
           :class="[isSidebarCollapsed ? 'text-center' : '']"
-          class="text-gray-900 dark:text-white font-bold text-sm hover:opacity-75"
+          class="text-white dark:text-white font-bold text-sm hover:opacity-75"
         >
           GSC
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', gscIcon]"
-          class="h-5 w-5 hover:opacity-75"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
         />
       </div>
-      <transition name="dropdown">
-        <ul v-show="isGscExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-          <li
-            v-for="route in gscRoutes"
-            :key="route.path"
-            :class="[
-              'flex items-center py-4 hover:opacity-75',
-              isSidebarCollapsed ? 'gap-2' : 'gap-4',
-            ]"
+      <ul v-show="isGscExpanded || isSidebarCollapsed" class="mt-4">
+        <li
+          v-for="route in gscRoutes"
+          :key="route.path"
+          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+        >
+          <router-link
+            :to="route.path"
+            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            @click.prevent="navigateWithDelay(route.path)"
           >
-            <router-link
-              :to="route.path"
-              class="flex items-center w-full"
-              @click.prevent="navigateWithDelay(route.path)"
-            >
-              <font-awesome-icon
-                :icon="['fac', route.icon]"
-                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
-              />
-              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </transition>
+            <font-awesome-icon
+              :icon="['fac', route.icon]"
+              class="h-5 w-5 text-white dark:text-white"
+            />
+            <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4">{{ route.name }}</span>
+          </router-link>
+        </li>
+      </ul>
     </div>
-    <hr class="my-4 border-gray-300 dark:border-gray-600" />
+    <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div>
       <div
         class="flex items-center justify-between cursor-pointer"
@@ -101,49 +93,45 @@
       >
         <h2
           :class="[isSidebarCollapsed ? 'text-center' : '']"
-          class="text-gray-900 dark:text-white font-bold text-sm hover:opacity-75"
+          class="text-white dark:text-white font-bold text-sm hover:opacity-75"
         >
           Order
         </h2>
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', orderIcon]"
-          class="h-5 w-5 hover:opacity-75"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
         />
       </div>
-      <transition name="dropdown">
-        <ul v-show="isOrderExpanded || isSidebarCollapsed" class="overflow-hidden mt-4">
-          <li
-            v-for="route in orderRoutes"
-            :key="route.path"
-            :class="[
-              'flex items-center py-4 hover:opacity-75',
-              isSidebarCollapsed ? 'gap-2' : 'gap-4',
-            ]"
+      <ul v-show="isOrderExpanded || isSidebarCollapsed" class="mt-4">
+        <li
+          v-for="route in orderRoutes"
+          :key="route.path"
+          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+        >
+          <router-link
+            :to="route.path"
+            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            @click.prevent="navigateWithDelay(route.path)"
           >
-            <router-link
-              :to="route.path"
-              class="flex items-center w-full"
-              @click.prevent="navigateWithDelay(route.path)"
-            >
-              <font-awesome-icon
-                :icon="['fac', route.icon]"
-                :class="[isSidebarCollapsed ? 'h-4 w-4' : 'h-5 w-5']"
-              />
-              <span v-if="!isSidebarCollapsed" class="text-gray-700 dark:text-white text-xs ml-4">{{ route.name }}</span>
-            </router-link>
-          </li>
-        </ul>
-      </transition>
+            <font-awesome-icon
+              :icon="['fac', route.icon]"
+              class="h-5 w-5 text-white dark:text-white"
+            />
+            <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4">{{ route.name }}</span>
+          </router-link>
+        </li>
+      </ul>
     </div>
     <div class="flex items-center justify-center mt-8 relative" :class="{ 'right-0': isSidebarCollapsed }">
       <button
         @click="toggleSidebar"
-        class="p-2"
+        class="p-2 rounded-lg border-2 border-gray-700 hover:bg-gray-700 dark:hover:bg-gray-700 transition-transform transform hover:-translate-y-1"
         @mouseover="handleMouseOverButton"
         @mouseleave="handleMouseOutButton"
       >
-        <font-awesome-icon :icon="['fac', collapseIcon]" class="h-5 w-5" />
+        <font-awesome-icon :icon="['fac', collapseIcon]" class="h-5 w-5 text-white dark:text-white group-hover/item:text-slate-500" />
       </button>
     </div>
   </div>
@@ -262,41 +250,7 @@ export default {
 
 <style scoped>
 .bg-lightmode {
-  background-color: #F1F2F3;
-  color: #333; /* Dark text in light mode */
-}
-.bg-darkmode {
-  background-color: #E5E7EB;
-}
-
-/* Icon styles */
-.icon {
-  filter: invert(0%);
-}
-.dark .icon {
-  filter: invert(100%);
-}
-
-/* Dropdown transition styles */
-.dropdown-enter-active,
-.dropdown-leave-active {
-  transition: all 0.5s ease;
-}
-.dropdown-enter,
-.dropdown-leave-to {
-  height: 0;
-  opacity: 0;
-}
-
-/* Text styles */
-.text-gray-900 { /* Base text color for dark mode */
-  color: #111827;
-}
-.dark .text-gray-900 { /* Override text color for dark mode */
-  color: white;
-}
-.text-gray-700 { /* Consistent text color across themes */
-  color: #333;
+  background-color: #2d2d2d;
 }
 
 /* Hide scrollbar */
