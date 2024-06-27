@@ -21,6 +21,76 @@
           <span class="metric-value">56%</span>
         </li>
       </ul>
+      <ul class="metrics-list">
+        <li class="metric-item">
+          <span class="metric-label">Users:</span>
+          <span class="metric-value">12345</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Sessions:</span>
+          <span class="metric-value">67890</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Bounce Rate:</span>
+          <span class="metric-value">56%</span>
+        </li>
+      </ul>
+      <ul class="metrics-list">
+        <li class="metric-item">
+          <span class="metric-label">Users:</span>
+          <span class="metric-value">12345</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Sessions:</span>
+          <span class="metric-value">67890</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Bounce Rate:</span>
+          <span class="metric-value">56%</span>
+        </li>
+      </ul>
+      <ul class="metrics-list">
+        <li class="metric-item">
+          <span class="metric-label">Users:</span>
+          <span class="metric-value">12345</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Sessions:</span>
+          <span class="metric-value">67890</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Bounce Rate:</span>
+          <span class="metric-value">56%</span>
+        </li>
+      </ul>
+      <ul class="metrics-list">
+        <li class="metric-item">
+          <span class="metric-label">Users:</span>
+          <span class="metric-value">12345</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Sessions:</span>
+          <span class="metric-value">67890</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Bounce Rate:</span>
+          <span class="metric-value">56%</span>
+        </li>
+      </ul>
+      <ul class="metrics-list">
+        <li class="metric-item">
+          <span class="metric-label">Users:</span>
+          <span class="metric-value">12345</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Sessions:</span>
+          <span class="metric-value">67890</span>
+        </li>
+        <li class="metric-item">
+          <span class="metric-label">Bounce Rate:</span>
+          <span class="metric-value">56%</span>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
