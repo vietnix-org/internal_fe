@@ -10,7 +10,10 @@
   >
     <div class="mb-8">
       <div
-        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+        :class="[
+          'flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg',
+          !isGa4Expanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700' : ''
+        ]"
         @click="toggleGroup('ga4')"
       >
         <h2
@@ -29,12 +32,16 @@
         <li
           v-for="route in ga4Routes"
           :key="route.path"
-          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
-          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+          class="group/item flex items-center py-1 px-2 rounded-lg"
+          :class="[
+            isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'
+          ]"
         >
           <router-link
             :to="route.path"
-            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            class="flex items-center w-full p-2 rounded-lg"
+            :class="isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'"
             @click.prevent="navigateWithDelay(route.path)"
           >
             <font-awesome-icon
@@ -49,7 +56,10 @@
     <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div class="mb-8">
       <div
-        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+        :class="[
+          'flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg',
+          !isGscExpanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700' : ''
+        ]"
         @click="toggleGroup('gsc')"
       >
         <h2
@@ -68,12 +78,16 @@
         <li
           v-for="route in gscRoutes"
           :key="route.path"
-          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
-          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+          class="group/item flex items-center py-1 px-2 rounded-lg"
+          :class="[
+            isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'
+          ]"
         >
           <router-link
             :to="route.path"
-            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            class="flex items-center w-full p-2 rounded-lg"
+            :class="isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'"
             @click.prevent="navigateWithDelay(route.path)"
           >
             <font-awesome-icon
@@ -88,7 +102,10 @@
     <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div>
       <div
-        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+        :class="[
+          'flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg',
+          !isOrderExpanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700' : ''
+        ]"
         @click="toggleGroup('order')"
       >
         <h2
@@ -107,12 +124,16 @@
         <li
           v-for="route in orderRoutes"
           :key="route.path"
-          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
-          :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
+          class="group/item flex items-center py-1 px-2 rounded-lg"
+          :class="[
+            isSidebarCollapsed ? 'gap-2' : 'gap-4',
+            isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'
+          ]"
         >
           <router-link
             :to="route.path"
-            class="flex items-center w-full p-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+            class="flex items-center w-full p-2 rounded-lg"
+            :class="isActive(route.path) ? 'bg-gray-700 dark:bg-gray-700' : 'hover:bg-gray-700 dark:hover:bg-gray-700'"
             @click.prevent="navigateWithDelay(route.path)"
           >
             <font-awesome-icon
@@ -140,6 +161,7 @@
 <script>
 import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
   name: 'Sidebar',
@@ -147,6 +169,8 @@ export default {
     FontAwesomeIcon,
   },
   setup() {
+    const route = useRoute();
+    const router = useRouter();
     const isGa4Expanded = ref(false);
     const isGscExpanded = ref(false);
     const isOrderExpanded = ref(false);
@@ -214,6 +238,16 @@ export default {
       collapseSidebar();
     };
 
+    const isActive = (path) => {
+      return route.path === path;
+    };
+
+    const navigateWithDelay = (path) => {
+      setTimeout(() => {
+        router.push(path);
+      }, 300);
+    };
+
     onMounted(() => {
       window.addEventListener('mouseover', handleMouseOverButton);
       window.addEventListener('mouseout', handleMouseOutButton);
@@ -243,6 +277,8 @@ export default {
       collapseSidebar,
       handleMouseOverButton,
       handleMouseOutButton,
+      isActive,
+      navigateWithDelay,
     };
   },
 };
