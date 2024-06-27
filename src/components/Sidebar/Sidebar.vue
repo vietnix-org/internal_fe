@@ -4,7 +4,7 @@
       'transition-all duration-300 ease-in-out',
       isSidebarCollapsed ? 'w-20' : sidebarWidthClass
     ]"
-    class="bg-gray-800 dark:bg-gray-900 h-full px-4 py-6 overflow-y-auto overflow-x-hidden relative"
+    class="bg-gray-800 dark:bg-gray-900 h-full px-4 py-6 overflow-y-scroll overflow-x-hidden relative custom-scrollbar"
     @mouseover="expandSidebar"
     @mouseleave="collapseSidebar"
   >
@@ -251,6 +251,25 @@ export default {
 <style scoped>
 .bg-lightmode {
   background-color: #2d2d2d;
+}
+
+/* Custom slim scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Slim scrollbar width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background-color: #333;
+  width: 8px; /* Expand scrollbar width on active/drag */
 }
 
 /* Hide scrollbar */
