@@ -11,19 +11,19 @@ export default {
   data() {
     return {
       viewComponents: {
-        'ga4-overview': () => import('@/views/contentViews/GA4/Ga4Overview.vue'),
-        'ga4-detail-traffic': () => import('@/views/contentViews/GA4/Ga4DetailTraffic.vue'),
-        'ga4-traffic-acquisition': () => import('@/views/contentViews/GA4/Ga4TrafficAcquisition.vue'),
-        'ga4-engagements': () => import('@/views/contentViews/GA4/Ga4Engagements.vue'),
-        'ga4-detail-event': () => import('@/views/contentViews/GA4/Ga4DetailEvent.vue'),
-        'gsc-overview': () => import('@/views/contentViews/GSC/GscOverview.vue'),
-        'gsc-detail': () => import('@/views/contentViews/GSC/GscDetail.vue'),
-        'order-overview': () => import('@/views/contentViews/Order/OrderOverview.vue'),
-        'order-seo': () => import('@/views/contentViews/Order/OrderSeo.vue'),
-        'order-google-ads': () => import('@/views/contentViews/Order/OrderGoogleAds.vue'),
-        'order-direct': () => import('@/views/contentViews/Order/OrderDirect.vue'),
-        'order-facebook': () => import('@/views/contentViews/Order/OrderFacebook.vue'),
-        'order-data-manager': () => import('@/views/contentViews/Order/OrderDataManager.vue')
+        'ga4-overview': () => import('@/components/Content/GA4/Ga4Overview.vue'),
+        'ga4-detail-traffic': () => import('@/components/Content/GA4/Ga4DetailTraffic.vue'),
+        'ga4-traffic-acquisition': () => import('@/components/Content/GA4/Ga4TrafficAcquisition.vue'),
+        'ga4-engagements': () => import('@/components/Content/GA4/Ga4Engagements.vue'),
+        'ga4-detail-event': () => import('@/components/Content/GA4/Ga4DetailEvent.vue'),
+        'gsc-overview': () => import('@/components/Content/GSC/GscOverview.vue'),
+        'gsc-detail': () => import('@/components/Content/GSC/GscDetail.vue'),
+        'order-overview': () => import('@/components/Content/Order/OrderOverview.vue'),
+        'order-seo': () => import('@/components/Content/Order/OrderSeo.vue'),
+        'order-google-ads': () => import('@/components/Content/Order/OrderGoogleAds.vue'),
+        'order-direct': () => import('@/components/Content/Order/OrderDirect.vue'),
+        'order-facebook': () => import('@/components/Content/Order/OrderFacebook.vue'),
+        'order-data-manager': () => import('@/components/Content/Order/OrderDataManager.vue')
       },
       titles: {
         'ga4-overview': 'GA4 / Overview',
