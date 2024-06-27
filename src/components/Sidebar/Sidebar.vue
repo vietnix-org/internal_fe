@@ -2,7 +2,7 @@
   <div
     :class="[
       'transition-all duration-300 ease-in-out',
-      isSidebarCollapsed ? 'w-20' : sidebarWidthClass
+      isSidebarCollapsed ? 'w-24' : sidebarWidthClass
     ]"
     class="bg-gray-800 dark:bg-gray-900 h-full px-4 py-6 overflow-y-scroll overflow-x-hidden relative custom-scrollbar"
     @mouseover="expandSidebar"
@@ -12,7 +12,7 @@
       <div
         :class="[
           'flex items-center justify-between cursor-pointer py-1 px-2 -mx-4',
-          !isGa4Expanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius' : ''
+          !isGa4Expanded ? (isSidebarCollapsed ? '' : 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius') : ''
         ]"
         @click="toggleGroup('ga4')"
       >
@@ -57,7 +57,7 @@
       <div
         :class="[
           'flex items-center justify-between cursor-pointer py-1 px-2 -mx-4',
-          !isGscExpanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius' : ''
+          !isGscExpanded ? (isSidebarCollapsed ? '' : 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius') : ''
         ]"
         @click="toggleGroup('gsc')"
       >
@@ -102,7 +102,7 @@
       <div
         :class="[
           'flex items-center justify-between cursor-pointer py-1 px-2 -mx-4',
-          !isOrderExpanded ? 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius' : ''
+          !isOrderExpanded ? (isSidebarCollapsed ? '' : 'hover:bg-gray-700 dark:hover:bg-gray-700 no-radius') : ''
         ]"
         @click="toggleGroup('order')"
       >
@@ -205,7 +205,7 @@ export default {
 
     const toggleSidebar = () => {
       isSidebarCollapsed.value = !isSidebarCollapsed.value;
-      sidebarWidthClass.value = isSidebarCollapsed.value ? 'w-20' : 'w-52';
+      sidebarWidthClass.value = isSidebarCollapsed.value ? 'w-24' : 'w-52';
     };
 
     const expandSidebar = () => {
@@ -213,7 +213,7 @@ export default {
         sidebarWidthClass.value = 'w-52';
         setTimeout(() => {
           if (!isMouseOverButton.value) {
-            sidebarWidthClass.value = 'w-20';
+            sidebarWidthClass.value = 'w-24';
           }
         }, 500);
       }
@@ -221,7 +221,7 @@ export default {
 
     const collapseSidebar = () => {
       if (isSidebarCollapsed.value && !isMouseOverButton.value) {
-        sidebarWidthClass.value = 'w-20';
+        sidebarWidthClass.value = 'w-24';
       }
     };
 
