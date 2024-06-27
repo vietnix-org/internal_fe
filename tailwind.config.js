@@ -13,8 +13,10 @@ module.exports = {
       },
       backgroundImage: {
         'topbar-gradient': 'linear-gradient(46deg, #A3BDED 0%, #6991C7 100%)',
+        'topbar-gradient-dark': 'linear-gradient(46deg, #6B8FC3 0%, #4D6B9F 100%)', 
       },
     },
   },
+  darkMode: 'class', // Enable class-based dark mode
   plugins: [],
 }
