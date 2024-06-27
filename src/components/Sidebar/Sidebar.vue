@@ -10,7 +10,7 @@
   >
     <div class="mb-8">
       <div
-        class="flex items-center justify-between cursor-pointer"
+        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
         @click="toggleGroup('ga4')"
       >
         <h2
@@ -22,14 +22,14 @@
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', ga4Icon]"
-          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75"
         />
       </div>
-      <ul v-show="isGa4Expanded || isSidebarCollapsed" class="mt-4">
+      <ul v-show="isGa4Expanded || isSidebarCollapsed" class="mt-2">
         <li
           v-for="route in ga4Routes"
           :key="route.path"
-          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
           :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
         >
           <router-link
@@ -49,7 +49,7 @@
     <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div class="mb-8">
       <div
-        class="flex items-center justify-between cursor-pointer"
+        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
         @click="toggleGroup('gsc')"
       >
         <h2
@@ -61,14 +61,14 @@
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', gscIcon]"
-          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75"
         />
       </div>
-      <ul v-show="isGscExpanded || isSidebarCollapsed" class="mt-4">
+      <ul v-show="isGscExpanded || isSidebarCollapsed" class="mt-2">
         <li
           v-for="route in gscRoutes"
           :key="route.path"
-          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
           :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
         >
           <router-link
@@ -88,7 +88,7 @@
     <hr class="my-4 border-gray-700 dark:border-gray-600" />
     <div>
       <div
-        class="flex items-center justify-between cursor-pointer"
+        class="flex items-center justify-between cursor-pointer py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
         @click="toggleGroup('order')"
       >
         <h2
@@ -100,14 +100,14 @@
         <font-awesome-icon
           v-if="!isSidebarCollapsed"
           :icon="['fac', orderIcon]"
-          class="h-5 w-5 text-white dark:text-white hover:opacity-75 rounded-corner-icon"
+          class="h-5 w-5 text-white dark:text-white hover:opacity-75"
         />
       </div>
-      <ul v-show="isOrderExpanded || isSidebarCollapsed" class="mt-4">
+      <ul v-show="isOrderExpanded || isSidebarCollapsed" class="mt-2">
         <li
           v-for="route in orderRoutes"
           :key="route.path"
-          class="group/item flex items-center py-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
+          class="group/item flex items-center py-1 px-2 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-700"
           :class="[isSidebarCollapsed ? 'gap-2' : 'gap-4']"
         >
           <router-link
