@@ -1,11 +1,13 @@
 <template>
   <div>
     <h1 class="text-xl font-bold mb-4">{{ currentTitle }}</h1>
-    <component :is="currentView" />
+    <component :is="currentView" v-if="currentView" />
   </div>
 </template>
 
 <script>
+import { markRaw } from 'vue';
+
 export default {
   name: 'Content',
   data() {
@@ -39,20 +41,38 @@ export default {
         'order-direct': 'Order / Direct',
         'order-facebook': 'Order / Facebook',
         'order-data-manager': 'Order / Data Manager'
-      }
+      },
+      currentComponent: null
+    };
+  },
+  watch: {
+    '$route.params.viewName': {
+      handler(viewName) {
+        if (viewName && this.viewComponents[viewName]) {
+          this.loadComponent(viewName);
+        } else {
+          this.currentComponent = null;
+        }
+      },
+      immediate: true
     }
   },
   computed: {
-    currentView() {
-      const viewName = this.$route.params.viewName;
-      return this.viewComponents[viewName] || null;
-    },
     currentTitle() {
       const viewName = this.$route.params.viewName;
       return this.titles[viewName] || 'Unknown Function';
+    },
+    currentView() {
+      return this.currentComponent;
+    }
+  },
+  methods: {
+    async loadComponent(viewName) {
+      const component = await this.viewComponents[viewName]();
+      this.currentComponent = markRaw(component.default);
     }
   }
-}
+};
 </script>
 
 <style scoped>
