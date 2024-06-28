@@ -1,3 +1,5 @@
+// tailwind.config.js
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        lightgrey: '#f0f0f0', // Pretty light grey
         lightblue: '#BFD7ED', // Light blue
         darkblue: '#5885AF',  // Dark blue
         sidebarDark: '#68BBE3',
@@ -27,6 +30,7 @@ module.exports = {
       backgroundImage: {
         'topbar-gradient': 'linear-gradient(46deg, #A3BDED 0%, #6991C7 100%)',
         'topbar-gradient-dark': 'linear-gradient(46deg, #6B8FC3 0%, #4D6B9F 100%)',
+        'sidebar-gradient-dark': 'linear-gradient(135deg, #4C6793 0%, #2E3B55 100%)', // New dark gradient
       },
       fontFamily: {
         body: [

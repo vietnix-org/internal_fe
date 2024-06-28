@@ -5,8 +5,10 @@ import App from './App.vue';
 import router from './router';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import './plugins/font-awesome';
+import VTooltip from 'v-tooltip';
 
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(router);
+app.use(VTooltip);
 app.mount('#app');
