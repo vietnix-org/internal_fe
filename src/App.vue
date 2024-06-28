@@ -1,27 +1,34 @@
 <template>
   <div class="flex flex-col h-screen overflow-hidden">
-    <Topbar />
-    <div class="flex flex-1 overflow-hidden">
-      <Sidebar />
-      <div class="flex-1 overflow-y-auto">
-        <router-view />
-      </div>
+    <div class="flex-1 overflow-hidden">
+      <component :is="isAuthenticated ? 'MainLayout' : 'LoginView'" />
     </div>
     <Footer />
   </div>
 </template>
 
 <script>
-import Topbar from './components/Topbar/Topbar.vue';
+import MainLayout from './components/MainLayout.vue';
 import Footer from './components/Footer/Footer.vue';
-import Sidebar from './components/Sidebar/Sidebar.vue';
+import LoginView from './views/LoginView.vue';
+import { authService } from './services/authService';
 
 export default {
   name: 'App',
   components: {
-    Topbar,
+    MainLayout,
     Footer,
-    Sidebar,
+    LoginView,
+  },
+  data() {
+    return {
+      isAuthenticated: authService.isAuthenticated(),
+    };
+  },
+  watch: {
+    '$route'() {
+      this.isAuthenticated = authService.isAuthenticated();
+    },
   },
 };
 </script>
