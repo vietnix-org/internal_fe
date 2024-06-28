@@ -12,6 +12,9 @@
           <li class="px-4 py-2 text-gray-700 dark:text-gray-300 cursor-pointer" @click="toggleDarkMode">
             Dark Mode
           </li>
+          <li class="px-4 py-2 text-gray-700 dark:text-gray-300 cursor-pointer" @click="logout">
+            Logout
+          </li>
         </ul>
       </div>
     </div>
@@ -19,6 +22,8 @@
 </template>
 
 <script>
+import { authService } from '@/services/authService';
+
 export default {
   name: "Topbar",
   data() {
@@ -39,6 +44,10 @@ export default {
         document.documentElement.classList.remove('dark');
       }
       this.isDropdownOpen = false; // Close the dropdown after toggling
+    },
+    logout() {
+      authService.logout();
+      this.$router.push({ name: 'login' });
     }
   }
 };
