@@ -1,8 +1,3 @@
-// src/services/authService.js
-
-// Authentication Service
-// This service handles user authentication, including JWT token storage and validation.
-
 export const authService = {
   // Check if the user is authenticated by verifying the existence of the auth token in local storage
   isAuthenticated() {
@@ -24,7 +19,7 @@ export const authService = {
     // BACKEND SERVICE CALL
     // Attempt to authenticate with the backend service using the provided username and password
     try {
-      const response = await fetch('YOUR_BACKEND_LOGIN_URL', {
+      const response = await fetch('BACKEND_LOGIN_URL', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +28,7 @@ export const authService = {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response needs to be checked');
       }
 
       const data = await response.json();
