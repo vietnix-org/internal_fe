@@ -2,6 +2,13 @@
   <div class="bg-topbar-gradient dark:bg-topbar-gradient-dark h-11 flex items-center justify-between px-4 transition-colors duration-300 ease-in-out">
     <img src="@/images/topbar_icons/logo.svg" alt="Logo" class="h-6 w-auto" />
 
+    <!-- Centered Admin Panel Button (only visible to admins) -->
+    <div class="flex-1 flex justify-center">
+      <button v-if="isAdmin" @click="goToAdminPanel" class="admin-btn px-3 py-1.5 text-gray-700 dark:text-gray-300 cursor-pointer transition ease-in-out delay-150 hover:bg-blue-100 dark:hover:bg-blue-800 duration-300 rounded-lg">
+        Admin Panel
+      </button>
+    </div>
+
     <!-- Right-side buttons -->
     <div class="flex items-center space-x-4">
       <!-- Dark Mode Toggle Button -->
@@ -16,7 +23,7 @@
         </svg>
       </button>
       <!-- Logout Button -->
-      <button @click="logout" class="px-3 py-1.5 text-gray-700 dark:text-gray-300 cursor-pointer transition ease-in-out delay-150 hover:scale-105 hover:bg-[#667BC6] duration-300 rounded-lg">
+      <button @click="logout" class="logout-btn px-3 py-1.5 text-gray-700 dark:text-gray-300 cursor-pointer transition ease-in-out delay-150 hover:bg-blue-100 dark:hover:bg-blue-800 duration-300 rounded-lg">
         Logout
       </button>
     </div>
@@ -30,7 +37,8 @@ export default {
   name: "Topbar",
   data() {
     return {
-      isDarkMode: false
+      isDarkMode: false,
+      isAdmin: authService.getRole() === 'admin',
     };
   },
   methods: {
@@ -41,6 +49,9 @@ export default {
       } else {
         document.documentElement.classList.remove('dark');
       }
+    },
+    goToAdminPanel() {
+      this.$router.push({ name: 'admin' });
     },
     logout() {
       authService.logout();
@@ -54,5 +65,22 @@ export default {
 </script>
 
 <style scoped>
-/* Any additional styling for the topbar can go here */
+/* Adjusting hover effects and colors */
+ul li:hover {
+  padding-left: 10px; /* Smaller hover effect */
+  transition: padding-left 0.2s ease-in-out;
+}
+
+.bg-blue-100 {
+  background-color: #1e40af; /* Darker blue for hover */
+}
+
+.dark:hover:bg-blue-800 {
+  background-color: #172554; /* Darker blue for dark mode hover */
+}
+
+.admin-btn:hover, .logout-btn:hover {
+  padding-left: 10px; /* Hover effect */
+  transition: padding-left 0.2s ease-in-out;
+}
 </style>

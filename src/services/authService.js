@@ -31,6 +31,15 @@ export const authService = {
       localStorage.setItem('userRole', 'admin'); // Set the role to admin for testing
       return { success: true, token: fakeJwt };
     }
+    if (username === 'test2' && password === 'Vietnix@2024') {
+      const fakeJwt = 'fake-jwt-token';
+      const now = new Date().getTime();
+      const expiryTime = now + SESSION_TIMEOUT;
+      localStorage.setItem('authToken', fakeJwt);
+      localStorage.setItem('expiryTime', expiryTime);
+      localStorage.setItem('userRole', 'user'); // Set the role to user for testing
+      return { success: true, token: fakeJwt };
+    }
 
     // BACKEND SERVICE CALL
     try {
@@ -53,7 +62,7 @@ export const authService = {
         const expiryTime = now + SESSION_TIMEOUT;
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('expiryTime', expiryTime);
-        localStorage.setItem('userRole', data.role); // Store the user role from backend
+        localStorage.setItem('userRole', data.role);
         return { success: true, token: data.token };
       } else {
         return { success: false };

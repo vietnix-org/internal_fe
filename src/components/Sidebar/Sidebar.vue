@@ -34,7 +34,7 @@
           :key="route.path"
           class="group/item flex items-center py-1 px-2 transition-all duration-500 ease-in-out relative"
           :class="[
-            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-4',
+            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-2',
             isActive(route.path) ? 'bg-gradient-to-r from-blue-600 to-blue-500' : 'hover:shadow-2xl hover:shadow-blue-400 hover:-translate-y-px'
           ]"
         >
@@ -48,7 +48,6 @@
             />
             <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4 group-hover:font-bold">{{ route.name }}</span>
           </router-link>
-          <span v-if="isSidebarCollapsed" class="tooltip">{{ route.name }}</span>
         </li>
       </ul>
     </div>
@@ -78,7 +77,7 @@
           :key="route.path"
           class="group/item flex items-center py-1 px-2 transition-all duration-500 ease-in-out relative"
           :class="[
-            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-4',
+            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-2',
             isActive(route.path) ? 'bg-gradient-to-r from-blue-600 to-blue-500' : 'hover:shadow-2xl hover:shadow-blue-400 hover:-translate-y-px'
           ]"
         >
@@ -92,7 +91,6 @@
             />
             <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4 group-hover:font-bold">{{ route.name }}</span>
           </router-link>
-          <span v-if="isSidebarCollapsed" class="tooltip">{{ route.name }}</span>
         </li>
       </ul>
     </div>
@@ -122,7 +120,7 @@
           :key="route.path"
           class="group/item flex items-center py-1 px-2 transition-all duration-500 ease-in-out relative"
           :class="[
-            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-4',
+            isSidebarCollapsed ? 'gap-2 rounded-lg' : 'gap-2',
             isActive(route.path) ? 'bg-gradient-to-r from-blue-600 to-blue-500' : 'hover:shadow-2xl hover:shadow-blue-400 hover:-translate-y-px'
           ]"
         >
@@ -136,7 +134,6 @@
             />
             <span v-if="!isSidebarCollapsed" class="text-white dark:text-white text-xs ml-4 group-hover:font-bold">{{ route.name }}</span>
           </router-link>
-          <span v-if="isSidebarCollapsed" class="tooltip">{{ route.name }}</span>
         </li>
       </ul>
     </div>
@@ -303,5 +300,9 @@ export default {
 
 .dark\:bg-sidebar-gradient-dark {
   background-image: linear-gradient(135deg, #4C6793 0%, #2E3B55 100%); /* Dark gradient */
+}
+
+.collapse-text {
+  display: none;
 }
 </style>
