@@ -1,51 +1,88 @@
-# internal_frontend_fresh
+# Table of Contents
 
-This template should help get you started developing with Vue 3 in Vite.
+1. [internal_frontend](#internal_frontend)
+2. [Recommended IDE Setup](#recommended-ide-setup)
+3. [Customise Configuration](#customise-configuration)
+4. [Project Setup](#project-setup)
+5. [Development](#development)
+6. [Production Build](#production-build)
+7. [How it Works: Your Development Guidelines](#how-it-works-your-development-guidelines)
+   - [Component Structure](#component-structure)
+     - [Create/Modify .vue Files](#create/modify-vue-files)
+     - [Integrate into Content View](#integrate-into-content-view)
+   - [Media Organization](#media-organization)
+     - [Images](#images)
+     - [Plugins](#plugins)
+8. [Future Plans: Backend Integration](#future-plans-backend-integration)
+   - [When the Backend is Available](#when-the-backend-is-available)
+     - [Authentication First](#authentication-first)
+     - [Independent Services](#independent-services)
+   - [Important Note](#important-note)
+
+
+# internal_frontend
+
+Using Vue3 template and Tailwind CSS, this project initialise frond-end service for Vietnix's internal dashboard.
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Customize configuration
+## Customise Configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+For advanced tweaks, see the [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
-```sh
-npm install
+```bash
+npm install 
 ```
 
-### Compile and Hot-Reload for Development
+## Development
 
-```sh
+```bash
 npm run dev
 ```
+This starts the development server with hot-reloading.
 
-### Compile and Minify for Production
+## Production Build
 
-```sh
+```bash
 npm run build
 ```
+This creates an optimised production build.
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+# How it Works: Your Development Guidelines
 
-```sh
-npm run test:unit
-```
+## Component Structure
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+### Create/Modify .vue Files
+- Each new function resides in its own .vue file within the `src/components/Content/Function_group_name/Function_name.vue` structure.
 
-```sh
-npm run test:e2e:dev
-```
+### Integrate into Content View
+- In `src/views/Content.vue`, add the component's `<route-view>` element.
+- Import the component in the `viewComponents` section of this file.
+- Set a clear title for the function in the `titles` array.
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Media Organisation
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+### Images
+- Store all images within subdirectories of `src/images`.
 
-```sh
-npm run build
-npm run test:e2e
-```
+### Plugins
+- Store all plugins within subdirectories of `src/plugins`.
+
+## Future Plans: Backend Integration
+
+### When the Backend is Available
+
+#### Authentication First
+- Implement an authentication service with JWT for security.
+- Move sensitive variables into a `.env` file.
+
+#### Independent Services
+- Develop services separately for resilience.
+- If a service crashes (except authentication), the embedded content area will simply remain empty.
+
+### Important Note
+- Unit and end-to-end (E2E) tests have not yet been implemented.
